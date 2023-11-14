@@ -5,6 +5,8 @@ import TransactionList from "./TransactionList";
 
 const App = () => {
   const [transactions, setTransactions] = useState([]);
+  const [filteredTransactions, setFilteredTransactions] = useState([]);
+
 
   useEffect(() => {
     // Fetch data from the local json server
@@ -24,7 +26,12 @@ const App = () => {
       setFilteredTransactions(updatedTransactions);
     };
   
-
+    const filterTransactions = (searchTerm) => {
+      const filtered = transactions.filter(transaction =>
+        transaction.description.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredTransactions(filtered);
+    };
   return(
     <div>
       <Header />
