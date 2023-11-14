@@ -21,3 +21,14 @@ const TransactionList = ({ transactions, onAddTransaction, onFilterTransactions 
             onChange={handleInputChange}
           />
      </label>
+     <label>
+          Amount:
+          <input
+            type="text"
+            name="amount"
+            value={newTransaction.amount}
+            onChange={handleInputChange}
+          />
+        </label>
+        <button type="submit">Add Transaction</button>
+      </form>
