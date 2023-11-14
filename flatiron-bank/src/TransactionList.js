@@ -32,3 +32,9 @@ const TransactionList = ({ transactions, onAddTransaction, onFilterTransactions 
         </label>
         <button type="submit">Add Transaction</button>
       </form>
+      <input
+        type="text"
+        placeholder="Search transactions"
+        value={searchTerm}
+        onChange={handleSearch}
+      />
