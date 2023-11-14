@@ -4,14 +4,26 @@ const TransactionList = ({ transactions, onAddTransaction, onFilterTransactions 
   const [newTransaction, setNewTransaction] = useState({ description: '', amount: '' });
   const [searchTerm, setSearchTerm] = useState('');
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewTransaction({ ...newTransaction, [name]: value });
+  };
+
   const handleAddTransaction = (e) => {
     e.preventDefault();
     onAddTransaction(newTransaction);
     setNewTransaction({ description: '', amount: '' });
   };
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+    onFilterTransactions(e.target.value);
+  };
+
   return (
     <div>
-        <form onSubmit={handleAddTransaction}>
+      <h2>Recent Transactions</h2>
+      <form onSubmit={handleAddTransaction}>
         <label>
           Description:
           <input
@@ -20,8 +32,8 @@ const TransactionList = ({ transactions, onAddTransaction, onFilterTransactions 
             value={newTransaction.description}
             onChange={handleInputChange}
           />
-     </label>
-     <label>
+        </label>
+        <label>
           Amount:
           <input
             type="text"
@@ -38,3 +50,15 @@ const TransactionList = ({ transactions, onAddTransaction, onFilterTransactions 
         value={searchTerm}
         onChange={handleSearch}
       />
+      <ul>
+        {transactions.map(transaction => (
+          <li key={transaction.id}>
+            <strong>{transaction.description}</strong> - {transaction.amount}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default TransactionList;
