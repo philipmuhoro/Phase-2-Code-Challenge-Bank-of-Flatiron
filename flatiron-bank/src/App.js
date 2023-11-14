@@ -20,7 +20,7 @@ const App = () => {
     }, []);  //loops continiously hence the array so as to run once
 
     const addTransaction = (newTransaction) => {
-      // Simulate adding a new transaction locally
+      // Adding a new transaction locally
       const updatedTransactions = [...transactions, { id: transactions.length + 1, ...newTransaction }];
       setTransactions(updatedTransactions);
       setFilteredTransactions(updatedTransactions);
@@ -32,20 +32,24 @@ const App = () => {
       );
       setFilteredTransactions(filtered);
     };
+
   return(
-    <div>
+    <div className="App">
       <Header />
-      <TransactionList />
-      
-    
-      
-    </div>
-  )
-}
-
-
-
+      <TransactionList
+        transactions={filteredTransactions}
+        onAddTransaction={addTransaction}
+        onFilterTransactions={filterTransactions}
+      />
+           
+      </div>
+  );
+};
 
 export default App;
+
+
+
+
 
 
