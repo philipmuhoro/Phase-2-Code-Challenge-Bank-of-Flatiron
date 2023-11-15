@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from "./Header";
 import TransactionList from "./TransactionList";
+import './App.css';
 
 
 const App = () => {
@@ -10,7 +11,7 @@ const App = () => {
 
   useEffect(() => {
     // Fetch data from the local json server
-    fetch('http://localhost:3000/transactions')
+    fetch('https://my-json-server.typicode.com/philipmuhoro/Phase-2-Code-Challenge-Bank-of-Flatiron/Transactions ')
       .then(response => response.json())
       .then(data => {
         setTransactions(data);
